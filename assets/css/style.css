@@ -1,0 +1,141 @@
+:root {
+  --brand-font: "Exo 2", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+.font-brand {
+  font-family: var(--brand-font);
+}
+
+.logo {
+  aspect-ratio: 1 / 1;
+  height: 3rem;
+}
+
+.title {
+  font-size: 4rem;
+  color: rgb(210, 211, 212);
+  font-weight: 400;
+  position: relative;
+  width: fit-content;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  background-color: rgb(255, 208, 208);
+  border: solid 7px red;
+  top: 31px;
+  right: 51px;
+  box-shadow: 
+    5px 5px 10px red, 
+    -5px -5px 10px red, 
+    5px -5px 10px red, 
+    -5px 5px 10px red;
+  transition: 1s;
+}
+
+.title:hover::after {
+  box-shadow: 
+    8px 8px 15px red,
+    -8px -8px 15px red,
+    8px -8px 15px red,
+    -8px 8px 15px red,
+    0px 8px 15px red,
+    0px -8px 15px red,
+    -8px 0px 15px red,
+    8px 0px 15px red;
+  background-color: white;
+  border: solid 5px red;
+}
+
+.subtitle {
+  color: rgb(240, 220, 220);
+  font-size: 1.3rem;
+  font-weight: 100;
+}
+
+.swim-lanes {
+  min-height: 60vh;
+}
+
+.task-card {
+  margin: 0 auto;
+}
+
+.task-card:hover {
+  cursor: grab;
+}
+
+.close {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  /* .logo-div {
+    display: none;
+  } */
+
+  .title {
+    font-size: 3rem;
+    color: rgb(210, 211, 212);
+    font-weight: 400;
+    position: relative;
+    width: fit-content;
+  }
+  
+  .title::after {
+    content: "";
+    position: absolute;
+    height: 13px;
+    width: 13px;
+    border-radius: 100%;
+    background-color: rgb(255, 208, 208);
+    border: solid 4px red;
+    top: 24.5px;
+    right: 39px;
+    box-shadow: 
+      4px 4px 10px red, 
+      -4px -4px 10px red, 
+      4px -4px 10px red, 
+      -4px 4px 10px red;
+    transition: 1s;
+  }
+  
+  .title:hover::after {
+    box-shadow: 
+      8px 8px 15px red,
+      -8px -8px 15px red,
+      8px -8px 15px red,
+      -8px 8px 15px red,
+      0px 8px 15px red,
+      0px -8px 15px red,
+      -8px 0px 15px red,
+      8px 0px 15px red;
+    background-color: white;
+    border: solid 3px red;
+  }
+  
+  .subtitle {
+    color: rgb(240, 220, 220);
+    font-size: calc(.7rem + 1vw);
+    font-weight: 100;
+  }
+}

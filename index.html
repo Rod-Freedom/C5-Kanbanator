@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="Hunt down your to-do's like the Terminator... let none of 'em alive!">
+  <link rel="icon" type="image/x-icon" href="./assets/images/Kanbanator_Favicon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script defer src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js" integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+  <script defer src="./assets/js/script.js"></script>
+  <title>Kanbanator | Task Board</title>
+</head>
+
+<body>
+  <header class="d-flex flex-column mb-4">
+    <section class="p-4 d-flex border-bottom border-white bg-dark align-items-center flex-wrap">
+      <div class="col-1 p-3 d-md-flex justify-content-start logo-div d-none">
+        <img class="logo" src="./assets/images/Kanbanator_Logo.png" alt="">
+      </div>
+      <div class="col-12 col-md-10 p-2 d-flex justify-content-center">
+        <h1 class="font-brand title text-center m-0">KANBANATOR</h1>
+      </div>
+    </section>
+    <div class="bg-black">
+      <p class="font-brand subtitle text-center m-0 p-2 text-uppercase">A Kanban board to hunt down your to-do's</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="text-center mb-5">
+      <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
+    </div>
+
+    <!-- Todo: Create a modal with a form to add tasks -->
+    <div class="d-flex flex-wrap col-md-6 col-12 col-10 border">
+      <div class="card-header col d-flex align-items-center justify-content-between">
+        <p class="m-0">Add task</p>
+        <button type="button" class="close border-0 bg-light" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="col-12 d-flex flex-lg-nowrap flex-wrap p-2">
+        <label for="task-title" class="d-flex flex-column m-2 col">Task title
+          <input id="task-title" type="text" class="col p-1 mt-2">
+        </label>
+        <label for="task-date" class="d-flex flex-column m-2 col">Task due date
+          <input id="task-date" type="date" class="col p-1 mt-2">
+        </label>
+      </div>
+      <label for="task-info" class="d-flex flex-column m-2 col p-2">Task description
+        <textarea name="description" id="task-info" cols="30" rows="5" class="col p-2 mt-2"></textarea>
+        <small></small>
+      </label>
+    </div>
+
+    <div class="row swim-lanes text-center justify-content-between">
+      <div class="col-12 col-lg-4 d-flex">
+        <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
+          <div class="card-header bg-white">
+            <h2 class="card-title mb-1">To Do</h2>
+          </div>
+
+          <div class="card-body bg-light">
+            <div id="todo-cards"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4 d-flex">
+        <div id="in-progress" class="card border-light mb-3 lane flex-grow-1">
+          <div class="card-header bg-white">
+            <h2 class="card-title mb-1">In Progress</h2>
+          </div>
+
+          <div class="card-body bg-light">
+            <div id="in-progress-cards"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4 d-flex">
+        <div id="done" class="card border-light mb-3 lane flex-grow-1">
+          <div class="card-header bg-white">
+            <h2 class="card-title mb-1">Done</h2>
+          </div>
+          <div class="card-body bg-light">
+            <div id="done-cards"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+
+</html>
