@@ -36,13 +36,13 @@
     </div>
   </header>
 
-  <div class="container">
+  <div class="d-flex flex-column position-relative justify-content-center align-items-center">
     <div class="text-center mb-5">
       <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
     </div>
 
     <!-- Todo: Create a modal with a form to add tasks -->
-    <div class="d-flex flex-wrap col-md-6 col-12 col-10 border">
+    <section id="add-task-form" class="d-flex flex-wrap col-lg-6 col-xl-4 col-11 border bg-white">
       <div class="card-header col d-flex align-items-center justify-content-between">
         <p class="m-0">Add task</p>
         <button type="button" class="close border-0 bg-light" aria-label="Close">
@@ -61,9 +61,9 @@
         <textarea name="description" id="task-info" cols="30" rows="5" class="col p-2 mt-2"></textarea>
         <small></small>
       </label>
-    </div>
+    </section>
 
-    <div class="row swim-lanes text-center justify-content-between">
+    <div class="row swim-lanes text-center justify-content-between col-11">
       <div class="col-12 col-lg-4 d-flex">
         <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
           <div class="card-header bg-white">
