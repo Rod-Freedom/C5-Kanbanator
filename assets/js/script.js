@@ -1,4 +1,3 @@
-// Retrieve tasks and nextId from localStorage
 const taskForm = $('#add-task-form');
 const btnClose = $('#btn-close');
 const btnNewTask = $('#btn-new-task');
@@ -10,11 +9,7 @@ const inputTaskInfo = $('#task-info');
 const todoDiv = $('#todo-cards');
 const inProgressDiv = $('#in-progress-cards');
 const doneDiv = $('#done-cards');
-
-const filterDiv = $('.filter')
-let nextId = JSON.parse(localStorage.getItem("nextId"));
-
-console.log(JSON.parse(localStorage.getItem("tasks"))[0]);
+const filterDiv = $('.filter');
 
 const loadLocal = () => {
     if (localStorage.getItem("tasks")) return JSON.parse(localStorage.getItem("tasks"))
@@ -83,6 +78,7 @@ const createTaskCard = (task) => {
 // Todo: create a function to render the task list and make cards draggable
 const renderTaskList = () => {
     const tasks = loadLocal();
+
     todoDiv.html('');
     inProgressDiv.html('');
     doneDiv.html('');
