@@ -21,14 +21,44 @@
   <title>Kanbanator | Task Board</title>
 </head>
 
-<body>
+<body class="position-relative">
+  <!-- Todo: Create a modal with a form to add tasks -->
+  <div class="filter d-none justify-content-center align-items-center position-absolute">
+    <section id="add-task-form" class="rounded-3 d-flex flex-wrap col-lg-6 col-xl-4 col-11 border border-dark bg-light">
+      <div class="card-header bg-dark col d-flex align-items-center justify-content-between">
+        <p class="m-0 font-brand color-brand h4">Add task</p>
+        <button id="btn-close" class="close border-0 bg-dark font-brand color-brand">X</button>
+      </div>
+
+      <div class="col-12 d-flex flex-lg-nowrap flex-wrap p-2">
+        <label for="task-title" class="d-flex flex-column m-2 col">Task title
+          <input id="task-title" type="text" class="col p-1 mt-2">
+        </label>
+        <label for="task-date" class="d-flex flex-column m-2 col position-relative">Task due date
+          <input id="task-date" type="date" class="col p-1 mt-2">
+          <small id="date-warning" class="text-danger ms-1 position-absolute invisible">Enter a present or future date!</small>
+        </label>
+      </div>
+
+      <label for="task-info" class="d-flex flex-column m-2 col p-2">Task description
+        <textarea name="description" id="task-info" cols="30" rows="5" class="col p-2 mt-2"></textarea>
+        <small>Write it as long as if you would tweet it.</small>
+      </label>
+
+      <div class="col-12 d-flex flex-column justify-content-center align-items-center mt-1 mb-2">
+        <button id="btn-add-task" class="btn btn-success">Add Task</button>
+        <small id="form-warning" class="text-danger mt-1 invisible">Fill out all the fields!</small>
+      </div>
+    </section>
+  </div>
+
   <header class="d-flex flex-column mb-4">
     <section class="p-4 d-flex border-bottom border-white bg-dark align-items-center flex-wrap">
       <div class="col-1 p-3 d-md-flex justify-content-start logo-div d-none">
         <img class="logo" src="./assets/images/Kanbanator_Logo.png" alt="">
       </div>
       <div class="col-12 col-md-10 p-2 d-flex justify-content-center">
-        <h1 class="font-brand title text-center m-0">KANBANATOR</h1>
+        <h1 class="font-brand color-brand title text-center m-0">KANBANATOR</h1>
       </div>
     </section>
     <div class="bg-black">
@@ -36,70 +66,50 @@
     </div>
   </header>
 
-  <div class="d-flex flex-column position-relative justify-content-center align-items-center">
+  <main class="d-flex flex-column justify-content-center align-items-center">
     <div class="text-center mb-5">
-      <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
+      <button id="btn-new-task" class="btn btn-success">New Task</button>
     </div>
 
-    <!-- Todo: Create a modal with a form to add tasks -->
-    <section id="add-task-form" class="d-flex flex-wrap col-lg-6 col-xl-4 col-11 border bg-white">
-      <div class="card-header col d-flex align-items-center justify-content-between">
-        <p class="m-0">Add task</p>
-        <button type="button" class="close border-0 bg-light" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="col-12 d-flex flex-lg-nowrap flex-wrap p-2">
-        <label for="task-title" class="d-flex flex-column m-2 col">Task title
-          <input id="task-title" type="text" class="col p-1 mt-2">
-        </label>
-        <label for="task-date" class="d-flex flex-column m-2 col">Task due date
-          <input id="task-date" type="date" class="col p-1 mt-2">
-        </label>
-      </div>
-      <label for="task-info" class="d-flex flex-column m-2 col p-2">Task description
-        <textarea name="description" id="task-info" cols="30" rows="5" class="col p-2 mt-2"></textarea>
-        <small></small>
-      </label>
-    </section>
 
-    <div class="row swim-lanes text-center justify-content-between col-11">
-      <div class="col-12 col-lg-4 d-flex">
+    <div class="row swim-lanes text-center justify-content-center col-11 col-xl-10 col-xxl-9">
+      <div class="col-12 col-lg-7 col-xl-4 d-flex">
         <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
           <div class="card-header bg-white">
             <h2 class="card-title mb-1">To Do</h2>
           </div>
 
-          <div class="card-body bg-light">
-            <div id="todo-cards"></div>
+          <div id="status-card" class="card-body bg-light">
+            <div data-status="to-do" id="todo-cards" class="status-column"></div>
           </div>
         </div>
       </div>
 
-      <div class="col-12 col-lg-4 d-flex">
+      <div class="col-12 col-lg-7 col-xl-4 d-flex">
         <div id="in-progress" class="card border-light mb-3 lane flex-grow-1">
           <div class="card-header bg-white">
             <h2 class="card-title mb-1">In Progress</h2>
           </div>
 
-          <div class="card-body bg-light">
-            <div id="in-progress-cards"></div>
+          <div id="status-card" class="card-body bg-light">
+            <div data-status="in-progress" id="in-progress-cards" class="status-column"></div>
           </div>
         </div>
       </div>
 
-      <div class="col-12 col-lg-4 d-flex">
+      <div class="col-12 col-lg-7 col-xl-4 d-flex">
         <div id="done" class="card border-light mb-3 lane flex-grow-1">
           <div class="card-header bg-white">
             <h2 class="card-title mb-1">Done</h2>
           </div>
-          <div class="card-body bg-light">
-            <div id="done-cards"></div>
+
+          <div id="status-card" class="card-body bg-light">
+            <div data-status="done" id="done-cards" class="status-column"></div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
 
   
 </body>
