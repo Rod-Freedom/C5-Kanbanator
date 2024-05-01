@@ -1,5 +1,6 @@
 :root {
   --brand-font: "Exo 2", sans-serif;
+  --brand-color: rgb(210, 211, 212);
 }
 
 * {
@@ -17,9 +18,30 @@ body {
   font-size: 16px;
 }
 
-#add-task-form {
+.color-brand {
+  color: var(--brand-color);
+}
+
+.filter {
   z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(0, 0, 0, .3);
+  margin: 0;
+  padding: 0;
+}
+
+.card-filter {
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  margin: 0;
+  padding: 0;
   position: absolute;
+}
+
+#add-task-form {
   margin: 0 4vw;
 }
 
@@ -27,14 +49,54 @@ body {
   font-family: var(--brand-font);
 }
 
+.logo-div {
+  position: relative;
+}
+
 .logo {
   aspect-ratio: 1 / 1;
   height: 3rem;
 }
 
+.logo-div::after {
+  content: "";
+  height: 4px;
+  width: 4px;
+  position: absolute;
+  top: 34.4px;
+  left: 48px;
+  border-radius: 50%;
+  background-color: rgb(255, 208, 208);
+  border: solid 1.4px red;
+  box-shadow: 
+  2px 2px 5px red, 
+  -2px -2px 5px red, 
+  2px -2px 5px red, 
+  -2px 2px 5px red,
+  -2px 0px 5px red,
+  2px 0px 5px red,
+  0px 2px 5px red,
+  0px -2px 5px red;
+  transition: 1s;
+}
+
+.logo-div:hover::after {
+  background-color: white;
+  border: solid .5px red;
+  box-shadow: 
+    3px 3px 5px red, 
+    -3px -3px 5px red, 
+    3px -3px 5px red, 
+    -3px 3px 5px red,
+    -3px 0px 5px red,
+    3px 0px 5px red,
+    0px 3px 5px red,
+    0px -3px 5px red;
+  transition: 1s;
+}
+
 .title {
   font-size: 4rem;
-  color: rgb(210, 211, 212);
   font-weight: 400;
   position: relative;
   width: fit-content;
@@ -94,11 +156,43 @@ body {
   font-size: 1.5rem;
 }
 
-@media (max-width: 768px) {
-  /* .logo-div {
-    display: none;
-  } */
+.close:hover {
+  color: white;
+}
 
+#task-info {
+  overflow-y: scroll;
+}
+
+#date-warning {
+  bottom: -33%;
+}
+
+.bg-filter {
+  background-color: rgb(255, 255, 255, .2);
+}
+
+.placed {
+  z-index: 9;
+}
+
+.dragging {
+  z-index: 10;
+}
+
+.status-column {
+  height: 100%;
+}
+
+#status-card {
+  min-height: 20vh;
+}
+
+.highlight {
+  background-color: rgb(164, 163, 163);
+}
+
+@media (max-width: 768px) {
   .title {
     font-size: 3rem;
     color: rgb(210, 211, 212);
